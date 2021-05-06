@@ -5,7 +5,7 @@ class AnswersList extends React.Component {
     return (
       <ul>
         {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
+            <li key={item.id}>{item.text} : {item.result}</li>
         ))}
       </ul>
     );
