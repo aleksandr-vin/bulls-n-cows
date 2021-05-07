@@ -55,7 +55,7 @@ class App extends React.Component {
               maxLength="4"
               pattern="^\d{4}$"
               size="4"
-              placeholder="????"
+              placeholder={"\u2219\u2219\u2219\u2219"}
               required={true}
               onChange={this.handleChange}
               value={this.state.text}
