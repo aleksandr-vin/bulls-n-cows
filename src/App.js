@@ -25,8 +25,7 @@ class App extends React.Component {
 
       return array;
     }
-    const [a,b,c,d, ...rest] = shuffle([0,1,2,3,4,5,6,7,8,9]);
-    return [a,b,c,d].join('');;
+    return shuffle([0,1,2,3,4,5,6,7,8,9]).slice(0, 4).join('');
   }
 
   constructor(props) {
@@ -71,7 +70,9 @@ class App extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ text: e.target.value });
+    if (e.target.value.match(/^\d*$/)) {
+      this.setState({ text: e.target.value });
+    }
   }
 
   handleSubmit(e) {
