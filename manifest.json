@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Bulls & Cows",
+  "name": "Bulls & Cows",
   "icons": [
     {
       "src": "favicon.ico",
