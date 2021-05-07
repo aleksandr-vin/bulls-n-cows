@@ -5,9 +5,9 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-test('renders title', () => {
+test('renders challenge text', () => {
   render(<App />);
-  const titleElement = screen.getByText(/Answers/i);
+  const titleElement = screen.getByText(/I have a secret number./i);
   expect(titleElement).toBeInTheDocument();
 });
 

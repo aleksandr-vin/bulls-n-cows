@@ -30,7 +30,12 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { items: [], text: '', number: this.getNumber() };
+    this.state = {
+      items: [],
+      text: '',
+      number: this.getNumber(),
+      message: 'I have a secret number.'
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -39,8 +44,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h3>Answers</h3>
           <AnswersList items={this.state.items} />
+          <h4>{this.state.message}</h4>
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="new-guess">
               Your guess?
@@ -78,6 +83,12 @@ class App extends React.Component {
     if (!this.state.text.match(/^\d{4}$/)) {
       return;
     }
+    if (this.getUniqueDigitsCount(this.state.text) !== 4) {
+      this.setState(state => ({
+        message: 'No duplicates, please!'
+      }));
+      return;
+    }
     const newItem = {
       text: this.state.text,
       id: Date.now(),
@@ -86,9 +97,14 @@ class App extends React.Component {
     this.setState(state => ({
       items: state.items.concat(newItem),
       text: '',
-      number: state.number
+      message: null
     }));
     console.log('Number:', this.state.number, newItem);
+  }
+
+  getUniqueDigitsCount(guess) {
+    let gs = guess.split('')
+    return [...new Set(gs)].length
   }
 
   getExistingDigits(number, guess) {
