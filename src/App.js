@@ -48,7 +48,7 @@ class App extends React.Component {
             <input
               id="new-guess"
               autoFocus={true}
-              type="text"
+              type="number"
               min="0000"
               max="9999"
               minLength="4"
@@ -70,9 +70,7 @@ class App extends React.Component {
   }
 
   handleChange(e) {
-    if (e.target.value.match(/^\d*$/)) {
-      this.setState({ text: e.target.value });
-    }
+    this.setState({ text: e.target.value });
   }
 
   handleSubmit(e) {
